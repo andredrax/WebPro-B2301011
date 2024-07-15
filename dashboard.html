@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Round Profile Picture Section -->
+        <div class="profile-container" onclick="toggleProfileDetails()">
+            <img src="profile-pic.jpg" alt="Profile Picture" class="profile-pic">
+        </div>
+
+        <!-- Profile Details Section (Hidden by Default) -->
+        <div class="profile-details" id="profile-details">
+            <div class="user-profile">
+                <h2>Username</h2>
+                <p>Email: user@example.com</p>
+                <button>Edit Profile</button>
+            </div>
+            <div class="progress-overview">
+                <h3>Progress Overview</h3>
+                <div class="progress-bars">
+                    <div class="progress-bar">
+                        <label>Completed Quizzes</label>
+                        <div class="progress">
+                            <div class="progress-inner" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="upcoming-quizzes">
+                <h3>Upcoming Quizzes</h3>
+                <ul>
+                    <li>Quiz on Algebra - June 25, 2024</li>
+                    <li>Quiz on Geometry - July 1, 2024</li>
+                </ul>
+            </div>
+            <div class="quiz-history">
+                <h3>Quiz History</h3>
+                <ul>
+                    <li>Algebra Quiz - Score: 85% - June 10, 2024</li>
+                    <li>Statistics Quiz - Score: 90% - June 15, 2024</li>
+                </ul>
+            </div>
+            <div class="achievements">
+                <h3>Achievements</h3>
+                <div class="badges">
+                    <img src="badge1.png" alt="Badge 1">
+                    <img src="badge2.png" alt="Badge 2">
+                </div>
+            </div>
+            <div class="notifications">
+                <h3>Notifications</h3>
+                <ul>
+                    <li>New Algebra quiz available!</li>
+                    <li>Statistics quiz deadline approaching.</li>
+                </ul>
+            </div>
+            <div class="learning-resources">
+                <h3>Learning Resources</h3>
+                <ul>
+                    <li><a href="#">Algebra Tutorial</a></li>
+                    <li><a href="#">Geometry Study Guide</a></li>
+                </ul>
+            </div>
+            <div class="quiz-categories">
+                <h3>Quiz Categories</h3>
+                <ul>
+                    <li>Algebra (10 quizzes)</li>
+                    <li>Geometry (8 quizzes)</li>
+                    <li>Statistics (5 quizzes)</li>
+                </ul>
+            </div>
+            <div class="settings">
+                <h3>Settings</h3>
+                <button>Update Email</button>
+                <button>Change Password</button>
+                <button>Notification Preferences</button>
+            </div>
+            <div class="support">
+                <h3>Support</h3>
+                <button>FAQ</button>
+                <button>Contact Support</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

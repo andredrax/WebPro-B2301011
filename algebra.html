@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra Quiz - Mathematics Hub</title>
+    <link rel="stylesheet" href="quizzes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Mathematics Hub</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="firsties.php">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="quizzes.html">Quizzes</a></li>
+                    <li><a href="contact.html">Contact & Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="algebra-quiz">
+            <div class="container">
+                <div class="timer">Time Left: <span id="timer">15:00</span></div>
+                <div class="progress-bar">
+                    <div class="progress-bar-inner" id="progress-bar-inner" style="width: 0%;"></div>
+                </div>
+                <div class="question-card" id="question-card">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+                <div class="question-buttons">
+                    <button id="prev-btn" onclick="prevAlgebraQuestion()">Previous</button>
+                    <button id="next-btn" onclick="nextAlgebraQuestion()">Next</button>
+                </div>
+                <div class="question-navigation">
+                    <ul id="question-nav">
+                        <!-- Question numbers will be inserted here by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2024 Mathematics Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Array of algebra questions
+        let algebraQuestions = [
+            { type: 'objective', text: 'Solve for x: 2x + 5 = 15', options: ['5', '7', '8', '10'], answer: '' },
+            { type: 'objective', text: 'Factorize: x^2 + 5x + 6', options: ['(x + 2)(x + 3)', '(x - 2)(x - 3)', '(x + 2)(x - 3)', '(x - 2)(x + 3)'], answer: '' },
+            { type: 'objective', text: 'Expand: (2x - 3)(x + 4)', options: ['2x^2 + 5x - 12', '2x^2 + 5x + 12', '2x^2 - 5x - 12', '2x^2 - 5x + 12'], answer: '' },
+            { type: 'objective', text: 'Solve for x: x^2 - 9 = 0', options: ['-3, 3', '-2, 2', '-1, 1', '-4, 4'], answer: '' },
+            { type: 'objective', text: 'What is the slope-intercept form of a linear equation?', options: ['y = mx + b', 'y = x + c', 'y = ax + b', 'y = mx - a'], answer: '' },
+            { type: 'theory', text: 'Explain the concept of a quadratic equation.', answer: '' },
+            { type: 'theory', text: 'What are the roots of a quadratic equation, and how are they related to its factors?', answer: '' },
+            { type: 'theory', text: 'Describe the method for solving a system of linear equations.', answer: '' },
+            { type: 'theory', text: 'What is the difference between an expression and an equation in algebra?', answer: '' },
+            { type: 'theory', text: 'Explain the process of completing the square in algebra.', answer: '' },
+        ];
+    
+        let currentAlgebraQuestionIndex = 0; // Current question index
+        let algebraTimerInterval; // Interval variable for timer
+    
+        // Function to start when DOM content is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            displayAlgebraQuestion(currentAlgebraQuestionIndex); // Display first question
+            startAlgebraTimer(15); // Start timer for 15 minutes
+    
+            // Event listener for Next button click
+            const nextButton = document.getElementById('next-button');
+            nextButton.addEventListener('click', () => nextAlgebraQuestion());
+        });
+    
+        // Function to display current question
+        function displayAlgebraQuestion(index) {
+            const questionCard = document.getElementById('question-card');
+            questionCard.innerHTML = ''; // Clear existing content
+    
+            const question = algebraQuestions[index]; // Get current question
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('question');
+    
+            const questionText = document.createElement('h2');
+            questionText.innerText = question.text;
+            questionElement.appendChild(questionText);
+    
+            // Check question type and create appropriate elements
+            if (question.type === 'objective') {
+                const optionsContainer = document.createElement('div');
+                optionsContainer.classList.add('options');
+    
+                // Create options for multiple choice questions
+                question.options.forEach((option, optionIndex) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.classList.add('option');
+    
+                    const radioInput = document.createElement('input');
+                    radioInput.type = 'radio';
+                    radioInput.name = `question-${index}-options`;
+                    radioInput.value = option;
+                    radioInput.id = `question-${index}-option-${optionIndex}`;
+                    radioInput.onchange = () => selectAlgebraOption(option);
+    
+                    const optionLabel = document.createElement('label');
+                    optionLabel.setAttribute('for', `question-${index}-option-${optionIndex}`);
+                    optionLabel.innerText = option;
+    
+                    optionElement.appendChild(radioInput);
+                    optionElement.appendChild(optionLabel);
+                    optionsContainer.appendChild(optionElement);
+                });
+    
+                questionElement.appendChild(optionsContainer);
+            } else if (question.type === 'theory') {
+                // Create textarea for theory questions
+                const answerInput = document.createElement('textarea');
+                answerInput.placeholder = 'Type your answer here...';
+                answerInput.value = question.answer; // Set answer if already answered
+                answerInput.oninput = (e) => algebraQuestions[index].answer = e.target.value;
+                questionElement.appendChild(answerInput);
+            }
+    
+            questionCard.appendChild(questionElement);
+    
+            populateAlgebraQuestionNav(); // Update question navigation dots
+            updateAlgebraProgressBar(); // Update progress bar
+        }
+    
+        // Function to select an option for multiple choice questions
+        function selectAlgebraOption(option) {
+            algebraQuestions[currentAlgebraQuestionIndex].answer = option;
+        }
+    
+        // Function to move to previous question
+        function prevAlgebraQuestion() {
+            if (currentAlgebraQuestionIndex > 0) {
+                currentAlgebraQuestionIndex--;
+                displayAlgebraQuestion(currentAlgebraQuestionIndex);
+            }
+        }
+    
+        // Function to move to next question
+        function nextAlgebraQuestion() {
+            if (currentAlgebraQuestionIndex < algebraQuestions.length - 1) {
+                currentAlgebraQuestionIndex++;
+                displayAlgebraQuestion(currentAlgebraQuestionIndex);
+            }
+        }
+    
+        // Function to populate question navigation dots
+        function populateAlgebraQuestionNav() {
+            const questionNav = document.getElementById('question-nav');
+            questionNav.innerHTML = ''; // Clear existing dots
+    
+            // Create dots for each question
+            algebraQuestions.forEach((question, index) => {
+                const navItem = document.createElement('li');
+                navItem.innerText = index + 1;
+                navItem.onclick = () => goToAlgebraQuestion(index);
+                if (index === currentAlgebraQuestionIndex) {
+                    navItem.classList.add('active'); // Highlight current question
+                }
+                questionNav.appendChild(navItem);
+            });
+        }
+    
+        // Function to move to a specific question
+        function goToAlgebraQuestion(index) {
+            currentAlgebraQuestionIndex = index;
+            displayAlgebraQuestion(currentAlgebraQuestionIndex);
+        }
+    
+        // Function to update progress bar based on answered questions
+        function updateAlgebraProgressBar() {
+            const progressBarInner = document.getElementById('progress-bar-inner');
+            const answeredQuestions = algebraQuestions.filter(q => q.answer !== '').length;
+            const progressPercentage = (answeredQuestions / algebraQuestions.length) * 100;
+            progressBarInner.style.width = `${progressPercentage}%`;
+        }
+    
+        // Function to start timer for the quiz
+        function startAlgebraTimer(minutes) {
+            let seconds = minutes * 60;
+            const timerDisplay = document.getElementById('timer');
+    
+            algebraTimerInterval = setInterval(() => {
+                const minutesDisplay = Math.floor(seconds / 60);
+                const secondsDisplay = seconds % 60;
+                timerDisplay.innerText = `${minutesDisplay}:${secondsDisplay < 10 ? '0' + secondsDisplay : secondsDisplay}`;
+    
+                if (seconds <= 0) {
+                    clearInterval(algebraTimerInterval);
+                    timerDisplay.innerText = 'Time Up!';
+                    // Optionally, you can handle time-up behavior here, like auto-submitting quiz
+                }
+    
+                seconds--;
+            }, 1000);
+        }
+    </script>
+    
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2024 Mathematics Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile 🖋️</title>
+  <link rel="stylesheet" href="editprofile.css">
+  <link rel="stylesheet" href="styless.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="firsties.html">
+                    <img src="NEW.jpg" alt="Edswandres' Mathematics Hub Logo" class="logo-image">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="firsties.html"><strong>Home</strong></a></li>
+                    <li><a href="forum.html"><strong>Forum</strong></a></li>
+                    <li><a href="quizzes.html"><strong>Quizzes</strong></a></li>
+                    <li class="search-bar">
+                        <input type="text" placeholder="Search..." class="search-input">
+                        <button class="search-button">🔎</button>
+                    </li>
+                    <li><a href="courses.html"><strong>Certificate</strong></a></li>
+                    <li><a href="contactpage.html"><strong>Contact & Support</strong></a></li>
+                    <li><a href="login2.html"><strong>Login</strong></a></li>
+                    <li>
+                        <button class="dashboard-btn" onclick="openRightNav()">🧑</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <form id="edit-profile-form">
+                <div class="form-group">
+                    <label for="profile-pic">Profile Picture: <i class="fas fa-camera"></i></label>
+                    <input type="file" id="profile-pic" name="profile-pic" accept="image/*">
+                    <div class="profile-pic-preview-container">
+                        <img id="profile-pic-preview" src="#" alt="Profile Picture" class="profile-pic-preview">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name: <i class="fas fa-user"></i></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: <i class="fas fa-envelope"></i></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password: <i class="fas fa-lock"></i></label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address: <i class="fas fa-map-marker-alt"></i></label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="save-btn">Save Changes <i class="fas fa-save"></i> 💾</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="rightSidebar" class="sidebar right-sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeRightNav()">×</a>
+        <div class="profile-info">
+            <div class="profile-emoji">🧑</div>
+            <div class="progress-circle">
+                <svg>
+                    <circle cx="50" cy="50" r="45"></circle>
+                    <circle cx="50" cy="50" r="45" id="progress"></circle>
+                </svg>
+                <div class="progress-value">75%</div>
+            </div>
+        </div>
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search..." class="search-input">
+            <button class="search-button">🔎</button>
+        </div>
+        <a href="#">Recently Accessed Courses</a>
+        <a href="#">Recently Accessed Quizzes</a>
+        <a href="#">Edit Profile</a>
+        <a href="#">Track Your Progress</a>
+        <a href="#">Logout</a>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="#" target="_blank" class="social-icon">
+                        <img src="FB.webp" alt="Facebook">
+                    </a>
+                    <a href="#" target="_blank" class="social-icon">
+                        <img src="X.jpg" alt="Twitter">
+                    </a>
+                    <a href="#" target="_blank" class="social-icon">
+                        <img src="IG.jpg" alt="Instagram">
+                    </a>
+                </div>
+                <div class="about-us">
+                    <a href="aboutus.html">About Us: Edswandres' Mathematics Hub is dedicated to providing quality education in mathematics.</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Edswandres' Mathematics Hub. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="editprofile.js"></script>
+</body>
+</html>

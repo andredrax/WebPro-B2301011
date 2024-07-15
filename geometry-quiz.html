@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Quiz - Mathematics Hub</title>
+    <link rel="stylesheet" href="quizzes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Mathematics Hub</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="firsties.php">Home</a></li>
+                    <li><a href="aboutpage.html">About</a></li>
+                    <li><a href="certificate.html">Courses</a></li>
+                    <li><a href="quizzes.html">Quizzes</a></li>
+                    <li><a href="contactpage.html">Contact & Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="geometry-quiz">
+            <div class="container">
+                <div class="timer">Time Left: <span id="timer">15:00</span></div>
+                <div class="progress-bar">
+                    <div class="progress-bar-inner" id="progress-bar-inner" style="width: 0%;"></div>
+                </div>
+                <div class="question-card" id="question-card">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+                <div class="question-buttons">
+                    <button id="prev-btn" onclick="prevGeometryQuestion()">Previous</button>
+                    <button id="next-btn" onclick="nextGeometryQuestion()">Next</button>
+                </div>
+                <div class="question-navigation">
+                    <ul id="question-nav">
+                        <!-- Question numbers will be inserted here by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2024 Mathematics Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Array of geometry questions
+        let geometryQuestions = [
+            { type: 'objective', text: 'What is the sum of interior angles of a triangle?', options: ['90 degrees', '120 degrees', '180 degrees', '360 degrees'], answer: '' },
+            { type: 'objective', text: 'What is the formula for the area of a circle?', options: ['πr^2', '2πr', 'π/r', 'πr'], answer: '' },
+            { type: 'objective', text: 'What is the Pythagorean theorem?', options: ['a^2 + b^2 = c^2', 'a^2 - b^2 = c^2', 'a + b = c', 'a^3 + b^3 = c^3'], answer: '' },
+            { type: 'objective', text: 'What is the formula for the volume of a sphere?', options: ['(4/3)πr^3', '(4/3)πr^2', 'πr^3', '2πr'], answer: '' },
+            { type: 'objective', text: 'What is the measure of each interior angle of a regular hexagon?', options: ['120 degrees', '135 degrees', '150 degrees', '180 degrees'], answer: '' },
+            { type: 'theory', text: 'Explain what congruent triangles are and how they are identified.', answer: '' },
+            { type: 'theory', text: 'Describe the process of finding the area of a triangle using its base and height.', answer: '' },
+            { type: 'theory', text: 'What is the relationship between the radius, diameter, and circumference of a circle?', answer: '' },
+            { type: 'theory', text: 'Explain how to calculate the surface area of a cube.', answer: '' },
+            { type: 'theory', text: 'Describe the concept of similar figures in geometry.', answer: '' },
+        ];
+    
+        let currentGeometryQuestionIndex = 0; // Current question index
+        let geometryTimerInterval; // Interval variable for timer
+    
+        // Function to start when DOM content is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            displayGeometryQuestion(currentGeometryQuestionIndex); // Display first question
+            startGeometryTimer(15); // Start timer for 15 minutes
+    
+            // Event listener for Enter key to navigate to next question
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    nextGeometryQuestion();
+                }
+            });
+    
+            // Event listener for Next button click
+            const nextButton = document.getElementById('next-btn');
+            nextButton.addEventListener('click', () => {
+                nextGeometryQuestion();
+            });
+        });
+    
+        // Function to display current geometry question
+        function displayGeometryQuestion(index) {
+            const questionCard = document.getElementById('question-card');
+            questionCard.innerHTML = ''; // Clear existing content
+    
+            const question = geometryQuestions[index]; // Get current question
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('question');
+    
+            const questionText = document.createElement('h2');
+            questionText.innerText = question.text;
+            questionElement.appendChild(questionText);
+    
+            // Check question type and create appropriate elements
+            if (question.type === 'objective') {
+                const optionsContainer = document.createElement('div');
+                optionsContainer.classList.add('options');
+    
+                // Create options for multiple choice questions
+                question.options.forEach((option, optionIndex) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.classList.add('option');
+    
+                    const radioInput = document.createElement('input');
+                    radioInput.type = 'radio';
+                    radioInput.name = `question-${index}-options`;
+                    radioInput.value = option;
+                    radioInput.id = `question-${index}-option-${optionIndex}`;
+                    radioInput.onchange = () => selectGeometryOption(option);
+    
+                    const optionLabel = document.createElement('label');
+                    optionLabel.setAttribute('for', `question-${index}-option-${optionIndex}`);
+                    optionLabel.innerText = option;
+    
+                    optionElement.appendChild(radioInput);
+                    optionElement.appendChild(optionLabel);
+                    optionsContainer.appendChild(optionElement);
+                });
+    
+                questionElement.appendChild(optionsContainer);
+            } else if (question.type === 'theory') {
+                // Create textarea for theory questions
+                const answerInput = document.createElement('textarea');
+                answerInput.placeholder = 'Type your answer here...';
+                answerInput.value = question.answer; // Set answer if already answered
+                answerInput.oninput = (e) => geometryQuestions[index].answer = e.target.value;
+                questionElement.appendChild(answerInput);
+            }
+    
+            questionCard.appendChild(questionElement);
+    
+            populateGeometryQuestionNav(); // Update question navigation dots
+            // No need to update progress bar here
+        }
+    
+        // Function to select an option for multiple choice questions
+        function selectGeometryOption(option) {
+            geometryQuestions[currentGeometryQuestionIndex].answer = option;
+            // No need to update progress bar on option selection
+        }
+    
+        // Function to move to previous geometry question
+        function prevGeometryQuestion() {
+            if (currentGeometryQuestionIndex > 0) {
+                currentGeometryQuestionIndex--;
+                displayGeometryQuestion(currentGeometryQuestionIndex);
+            }
+        }
+    
+        // Function to move to next geometry question
+        function nextGeometryQuestion() {
+            if (currentGeometryQuestionIndex < geometryQuestions.length - 1) {
+                currentGeometryQuestionIndex++;
+                displayGeometryQuestion(currentGeometryQuestionIndex);
+                updateGeometryProgressBar(); // Update progress bar only on moving to the next question
+            }
+        }
+    
+        // Function to populate question navigation dots for geometry questions
+        function populateGeometryQuestionNav() {
+            const questionNav = document.getElementById('question-nav');
+            questionNav.innerHTML = ''; // Clear existing dots
+    
+            // Create dots for each geometry question
+            geometryQuestions.forEach((question, index) => {
+                const navItem = document.createElement('li');
+                navItem.innerText = index + 1;
+                navItem.onclick = () => goToGeometryQuestion(index);
+                if (index === currentGeometryQuestionIndex) {
+                    navItem.classList.add('active'); // Highlight current question
+                }
+                questionNav.appendChild(navItem);
+            });
+        }
+    
+        // Function to move to a specific geometry question
+        function goToGeometryQuestion(index) {
+            currentGeometryQuestionIndex = index;
+            displayGeometryQuestion(currentGeometryQuestionIndex);
+        }
+    
+        // Function to update progress bar based on answered geometry questions
+        function updateGeometryProgressBar() {
+            const progressBarInner = document.getElementById('progress-bar-inner');
+            const answeredQuestions = geometryQuestions.filter(q => q.answer !== '').length;
+            const progressPercentage = (answeredQuestions / geometryQuestions.length) * 100;
+            progressBarInner.style.width = `${progressPercentage}%`;
+        }
+    
+        // Function to start timer for the geometry quiz
+        function startGeometryTimer(minutes) {
+            let seconds = minutes * 60;
+            const timerDisplay = document.getElementById('timer');
+    
+            geometryTimerInterval = setInterval(() => {
+                const minutesDisplay = Math.floor(seconds / 60);
+                const secondsDisplay = seconds % 60;
+                timerDisplay.innerText = `${minutesDisplay}:${secondsDisplay < 10 ? '0' + secondsDisplay : secondsDisplay}`;
+    
+                if (seconds <= 0) {
+                    clearInterval(geometryTimerInterval);
+                    timerDisplay.innerText = 'Time Up!';
+                    // Optionally, you can handle time-up behavior here, like auto-submitting quiz
+                }
+    
+                seconds--;
+            }, 1000);
+        }
+    </script>
+    
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2024 Mathematics Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

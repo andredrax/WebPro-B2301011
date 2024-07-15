@@ -1,0 +1,220 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  background: url('image6.jpg') no-repeat center center fixed;
+  backdrop-filter: blur(2px);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container, .form-container, .role-selection {
+  background-color: rgba(255, 111, 0, 0.8); /* Transparent background */
+  padding: 25px;
+  border-radius: 15px; /* Remove rounded corners for a rectangular shape */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  transition: all 0.3s ease;
+  position: fixed; /* Fixed position */
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure cards are on top */
+  text-align: center;
+}
+
+.login-container:hover, .form-container:hover, .role-selection:hover {
+  transform: translate(-50%, -50%) translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-form, .form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form h2, .form-container h2, .role-selection h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.form-control label {
+  font-weight: bold;
+}
+
+.form-control input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-control input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #007bff;
+}
+
+.password-toggle:hover {
+  text-decoration: underline;
+}
+
+button {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  background-color: #004494;
+}
+
+button:focus {
+  outline: none;
+}
+
+.additional-links {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.additional-links a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.additional-links a:hover {
+  color: #0056b3;
+}
+
+.separator {
+  color: #777;
+  margin: 0 5px;
+}
+
+.form-container {
+  display: none;
+  padding: 20px;
+  border-radius: 0px; /* Remove rounded corners for a rectangular shape */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.form-container button.close-btn {
+  background-color: #ccc;
+  color: #333;
+  margin-top: 10px;
+}
+
+.form-container button.close-btn:hover {
+  background-color: #bbb;
+}
+
+.social-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-login p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  color: white;
+  font-size: 16px;
+}
+
+.social-button.google {
+  background-color: #db4437;
+}
+
+social-button.github {
+  background-color: #333;
+}
+
+.social-button.facebook {
+  background-color: #3b5998;
+}
+
+.social-button.google:hover {
+  background-color: #c33d29;
+}
+
+.social-button.github:hover {
+  background-color: #222;
+}
+
+.social-button.facebook:hover {
+  background-color: #2d4373;
+}
+
+.social-button i {
+  margin-right: 10px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 5px;
+}
+
+/* Styles for side-by-side form groups */
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.form-group .form-control {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .form-group {
+    flex-direction: column;
+  }
+}

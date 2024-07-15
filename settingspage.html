@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings Page</title>
+<link rel="stylesheet" href="settingspage.css">
+<link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="firsties.html">
+                    <img src="NEW.jpg" alt="Edswandres' Mathematics Hub Logo" class="logo-image">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="firsties.php"><strong>Home</strong></a></li>
+                    <li><a href="forum.html"><strong>Forum</strong></a></li>
+                    <li><a href="quizzes.html"><strong>Quizzes</strong></a></li>
+                    <li class="search-bar">
+                        <input type="text" placeholder="Search..." class="search-input">
+                        <button class="search-button">🔎</button>
+                    </li>
+                    <li><a href="courses.html"><strong>Certificate</strong></a></li>
+                    <li><a href="contactpage.html"><strong>Contact & Support</strong></a></li>
+                    <li><a href="login2.html"><strong>Login</strong></a></li>
+                    <li>
+                        <button class="dashboard-btn" onclick="openRightNav()">🧑</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+     <!-- Right Sidebar (Dashboard) -->
+     <div id="rightSidebar" class="sidebar right-sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeRightNav()">×</a>
+        <div class="profile-info">
+            <div class="profile-emoji">🧑</div>
+            <div class="progress-circle">
+                <svg>
+                    <circle cx="50" cy="50" r="45"></circle>
+                    <circle cx="50" cy="50" r="45" id="progress"></circle>
+                </svg>
+                <div class="progress-value">75%</div>
+            </div>
+        </div>
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search..." class="search-input">
+            <button class="search-button">🔎</button>
+        </div>
+        <a href="#">Recently Accessed Courses</a>
+        <a href="#">Recently Accessed Quizzes</a>
+        <a href="#">Edit Profile</a>
+        <a href="#">Track Your Progress</a>
+        <a href="#" onclick="openSettings()">Settings</a>
+        <a href="#">Logout</a>
+    </div>
+     
+  <div class="settings-container">
+    <h1>Settings</h1>
+    
+    <div class="setting-option">
+      <label for="theme">Select Theme:</label>
+      <select id="theme" aria-label="Select Theme">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+    
+    <div class="setting-option">
+      <label for="fontSize">Font Size:</label>
+      <input type="range" id="fontSize" min="12" max="24" step="2" aria-label="Font Size">
+    </div>
+    
+    <div class="setting-option">
+      <label for="notifications">Enable Notifications:</label>
+      <input type="checkbox" id="notifications" aria-label="Enable Notifications">
+    </div>
+    
+    <div class="setting-option">
+      <button id="zoomIn" aria-label="Zoom In">Zoom In</button>
+      <button id="zoomOut" aria-label="Zoom Out">Zoom Out</button>
+    </div>
+    
+    <button onclick="saveSettings()" aria-label="Save Settings">Save Settings</button>
+  </div>
+  
+  <script src="settingspage.js"></script>
+  <script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+    }
+
+    function openRightNav() {
+        document.getElementById("rightSidebar").style.width = "250px";
+    }
+
+    function closeRightNav() {
+        document.getElementById("rightSidebar").style.width = "0";
+    }
+    function openSettings() {
+// Redirect to the settings page
+window.location.href = "settings.html";
+}
+
+</script>
+</body>
+</html>

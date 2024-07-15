@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes - Mathematics Hub</title>
+    <link rel="stylesheet" href="quizzes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>QUIZZES HUB</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="firsties.php">Home</a></li>
+                    <li><a href="aboutpage.html">About</a></li>
+                    <li><a href="certificate.html">Certificate</a></li>
+                    <li><a href="quizzes.html">Quizzes</a></li>
+                    <li><a href="contactpage.html">Contact & Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="levels" id="levels-section">
+            <div class="container levels-container">
+                <div class="level-card" id="level1" onclick="showLevel('level-1')">
+                    <div class="card-background">
+                      <img src="monster.jpg" alt="Level 1 Image">
+                    </div>
+                    <div class="content-overlay"></div>
+                    <div class="content-details">
+                        <h2>📚 LEVEL 1 - BEGINNER</h2>
+                        <p>Start your journey here!</p>
+                        <div class="progress-bar">
+                            <div class="progress-bar-inner" style="width: 50%;"></div>
+                        </div>
+                        <button class="start-button">Start Level 1</button>
+                    </div>
+                </div>
+                <div class="level-card locked" onclick="alert('Finish Level 1 to unlock this level!')">
+                    <div class="card-background">
+                        <img src="inter.jpg" alt="Level 1 Image">
+                    </div>
+                    <div class="content-overlay"></div>
+                    <div class="content-details">
+                        <h2>🔒 LEVEL 2 - INTERMEDIATE</h2>
+                        <p>Finish Level 1 to unlock</p>
+                    </div>
+                </div>
+                <div class="level-card locked" onclick="alert('Finish Level 2 to unlock this level!')">
+                    <div class="card-background">
+                      <img src="adv.jpg" alt="Level 1 Image">
+                    </div>
+                    <div class="content-overlay"></div>
+                    <div class="content-details">
+                        <h2>🔒 LEVEL 3 - MASTER</h2>
+                        <p>Finish Level 2 to unlock</p>
+                    </div>
+                </div>
+
+                <div class="level-card locked" onclick="alert('Finish Level 2 to unlock this level!')">
+                    <div class="card-background">
+                      <img src="adv.jpg" alt="Level 1 Image">
+                    </div>
+                    <div class="content-overlay"></div>
+                    <div class="content-details">
+                        <h2>🔒 LEVEL 4 - GRANDMASTER</h2>
+                        <p>Finish Level 3 to unlock</p>
+                    </div>
+                </div>
+
+                
+                <div class="level-card locked" onclick="alert('Finish Level 2 to unlock this level!')">
+                    <div class="card-background">
+                      <img src="adv.jpg" alt="Level 1 Image">
+                    </div>
+                    <div class="content-overlay"></div>
+                    <div class="content-details">
+                        <h2>🔒 LEVEL 5 - GRANDMASTER</h2>
+                        <p>Finish Level 4 to unlock</p>
+                    </div>
+                </div>
+
+                
+                <div class="level-card locked" onclick="alert('Finish Level 2 to unlock this level!')">
+                    <div class="card-background">
+                      <img src="adv.jpg" alt="Level 1 Image">
+                    </div>
+                    <div class="content-overlay"></div>
+                    <div class="content-details">
+                        <h2>🔒 LEVEL 6 - GRANDMASTER</h2>
+                        <p>Finish Level 5 to unlock</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+    
+        <section class="quizzes" id="level-1" style="display:none;">
+            <div class="container">
+                <div class="quiz-card" id="quiz-measurement">
+                    <div class="card-content">
+                        <h2>Understanding Measurement 📏</h2>
+                        <p>Master concepts of length, area, volume, and more.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar">
+                            <div class="progress-bar-inner" style="width: 50%;"></div>
+                        </div>
+                        <a href="measurement-quiz.html" class="arrow-link">Start Quiz <span>&#10132;</span></a>
+                    </div>
+                </div>
+
+                <div class="quiz-card" id="quiz-linear-algebra">
+                    <div class="card-content">
+                        <h2>Understanding Linear Algebra ➗</h2>
+                        <p>Dive into vector spaces, matrices, and linear systems.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar">
+                            <div class="progress-bar-inner" style="width: 40%;"></div>
+                        </div>
+                        <a href="linear-algebra.html" class="arrow-link">Start Quiz <span>&#10132;</span></a>
+                    </div>
+                </div>
+
+                <div class="quiz-card" id="quiz-algebra">
+                    <div class="card-content">
+                        <h2>Understanding Algebra 🧮</h2>
+                        <p>Solve equations and understand algebraic structures.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar">
+                            <div class="progress-bar-inner" style="width: 30%;"></div>
+                        </div>
+                        <a href="algebra.html" class="arrow-link">Start Quiz <span>&#10132;</span></a>
+                    </div>
+                </div>
+
+                <div class="quiz-card" id="quiz-geometry">
+                    <div class="card-content">
+                        <h2>Understanding Geometry 🔢</h2>
+                        <p>Explore shapes, sizes, relative positions, and properties of space.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar">
+                            <div class="progress-bar-inner" style="width: 20%;"></div>
+                        </div>
+                        <a href="geometry-quiz.html" class="arrow-link">Start Quiz <span>&#10132;</span></a>
+                    </div>
+                </div>
+
+                <div class="quiz-card" id="quiz-statistics">
+                    <div class="card-content">
+                        <h2>Understanding Statistics 📊</h2>
+                        <p>Analyze and interpret data for informed decisions.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar">
+                            <div class="progress-bar-inner" style="width: 60%;"></div>
+                        </div>
+                        <a href="statistics-quiz.html" class="arrow-link">Start Quiz <span>&#10132;</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2024 Mathematics Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showLevel(level) {
+            document.getElementById('levels-section').style.display = 'none';
+            document.getElementById(level).style.display = 'block';
+        }
+    </script>
+    <script>
+        let currentLevel = 1;
+
+        document.addEventListener('DOMContentLoaded', checkProgress);
+        
+        function checkProgress() {
+            const level2Button = document.getElementById('level-2');
+            const level3Button = document.getElementById('level-3');
+        
+            if (localStorage.getItem('level1Complete') === 'true') {
+                level2Button.disabled = false;
+            }
+            if (localStorage.getItem('level2Complete') === 'true') {
+                level3Button.disabled = false;
+            }
+        }
+        
+        function startQuiz(level) {
+            currentLevel = level;
+            document.getElementById('quiz-section').style.display = 'block';
+            // Load quiz questions based on level
+        }
+        
+        function completeQuiz(level) {
+            document.getElementById('quiz-section').style.display = 'none';
+            document.getElementById('summary').style.display = 'block';
+        
+            if (level === 1) {
+                localStorage.setItem('level1Complete', 'true');
+                document.getElementById('level-2').disabled = false;
+            } else if (level === 2) {
+                localStorage.setItem('level2Complete', 'true');
+                document.getElementById('level-3').disabled = false;
+            }
+        }
+        
+        function backToMain() {
+            document.getElementById('summary').style.display = 'none';
+            document.getElementById('quiz-section').style.display = 'none';
+        }
+        document.addEventListener('DOMContentLoaded', loadStorage);
+
+    function loadStorage() {
+        const storageList = document.getElementById('storage-list');
+        storageList.innerHTML = '';
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            const listItem = document.createElement('li');
+            listItem.textContent = `${key}: ${value}`;
+            storageList.appendChild(listItem);
+        }
+    }
+
+    function addItem() {
+        const key = document.getElementById('storage-key').value;
+        const value = document.getElementById('storage-value').value;
+        if (key && value) {
+            localStorage.setItem(key, value);
+            loadStorage();
+        }
+    }
+
+    function clearStorage() {
+        localStorage.clear();
+        loadStorage();
+    }
+
+    </script>    
+</body>
+</html>

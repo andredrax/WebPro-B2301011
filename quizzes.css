@@ -1,0 +1,786 @@
+body {
+    font-family: 'Proxima Nova', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000; /* Black text */
+    background: linear-gradient(135deg, #add8e6, #007bff); /* Gradient background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styles */
+.header {
+    background-color: black;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.header .logo h1 {
+    margin: 0;
+    color: #ff8c00; /* Orange logo text */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8em; /* Slightly larger logo */
+}
+
+nav {
+    background-color: transparent;
+    padding: 10px 20px;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    color: #ff8c00; /* Orange text */
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Main content styles */
+.main-content {
+    padding-top: 80px; /* Adjust based on header height */
+    flex: 1;
+}
+
+.quizzes {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #add8e6; /* Pastel blue background */
+}
+
+.quizzes .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.quiz-card {
+    width: 250px; /* Adjusted width */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-card .card-content {
+    padding: 20px;
+    flex: 1;
+}
+
+.quiz-card .card-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+    color: #000; /* Black text */
+}
+
+.quiz-card .card-content p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.quiz-card .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #e0e0e0; /* Darker grey background */
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px; /* Thicker progress bar */
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    width: 0%; /* Start empty */
+    background-color: #28a745; /* Green progress color */
+    transition: width 0.3s ease;
+}
+
+.arrow-link {
+    color: #007bff; /* Blue arrow color */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.arrow-link span {
+    margin-left: 5px;
+}
+
+/* Footer styles */
+footer {
+    padding: 20px 0;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    margin-top: auto;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-left ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.footer-left ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-left ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-right p {
+    margin: 0;
+}
+
+.footer-right p a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.footer-right p a:hover {
+    text-decoration: underline;
+}
+
+/* Specific hover effects for each quiz card */
+#quiz-measurement:hover {
+    background-color: #007bff; /* Blue */
+    color: #fff;
+}
+
+#quiz-linear-algebra:hover {
+    background-color: #ff8c00; /* Orange */
+    color: #fff;
+}
+
+#quiz-algebra:hover {
+    background-color: #007bff; /* Blue */
+    color: #fff;
+}
+
+#quiz-geometry:hover {
+    background-color: #ff8c00; /* Orange */
+    color: #fff;
+}
+
+#quiz-statistics:hover {
+    background-color: #007bff; /* Blue */
+    color: #fff;
+}
+
+#quiz-measurement:hover .card-footer,
+#quiz-linear-algebra:hover .card-footer,
+#quiz-algebra:hover .card-footer,
+#quiz-geometry:hover .card-footer,
+#quiz-statistics:hover .card-footer {
+    background-color: #4d4d4d; /* Darker grey when hover */
+}
+
+/* Measurement Quiz Page Specific Styles */
+.measurement-quiz .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.timer {
+    font-size: 1.5em;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.question-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Move to the bottom of the question card */
+}
+
+#question-nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+#question-nav li {
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 50%; /* Rounded to make dots */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#question-nav li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.question-card {
+    width: 100%;
+    max-width: 600px; /* Adjusted width */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px; /* Move to the bottom of the question card */
+}
+
+.question-buttons button {
+    background-color: #007bff; /* Blue button */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.question-buttons button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Option Dots */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.option input[type="radio"] {
+    display: none; /* Hide the radio buttons */
+}
+
+.option label {
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px; /* Space for the dot */
+    font-size: 1em;
+}
+
+/* Create the dot */
+.option label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #007bff; /* Blue dot */
+    background-color: transparent; /* Initially transparent */
+}
+
+/* On selecting the option, change dot color */
+.option input[type="radio"]:checked + label::before {
+    background-color: #007bff; /* Blue */
+}
+
+/* Emoji Styling */
+.question-text::before {
+    content: '🤔 ';
+}
+
+.question-text::after {
+    margin-left: 10px;
+}
+
+.question-text[data-question-type="math"]::after {
+    content: '➕';
+}
+
+.question-text[data-question-type="measurement"]::after {
+    content: '📏';
+}
+
+.question-text[data-question-type="geometry"]::after {
+    content: '📐';
+}
+
+.question-text[data-question-type="statistics"]::after {
+    content: '📊';
+}
+/* Linear Algebra Quiz Page Specific Styles */
+.linear-algebra-quiz .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.linear-algebra-quiz .timer {
+    font-size: 1.5em;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.linear-algebra-quiz .question-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Move to the bottom of the question card */
+}
+
+.linear-algebra-quiz #question-nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.linear-algebra-quiz #question-nav li {
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 50%; /* Rounded to make dots */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.linear-algebra-quiz #question-nav li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.linear-algebra-quiz .question-card {
+    width: 100%;
+    max-width: 600px; /* Adjusted width */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.linear-algebra-quiz .question-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px; /* Move to the bottom of the question card */
+}
+
+.linear-algebra-quiz .question-buttons button {
+    background-color: #ff8c00; /* Orange button */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.linear-algebra-quiz .question-buttons button:hover {
+    background-color: #e67e22; /* Darker orange on hover */
+}
+
+/* Option Dots */
+.linear-algebra-quiz .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.linear-algebra-quiz .option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.linear-algebra-quiz .option input[type="radio"] {
+    display: none; /* Hide the radio buttons */
+}
+
+.linear-algebra-quiz .option label {
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px; /* Space for the dot */
+    font-size: 1em;
+}
+
+/* Create the dot */
+.linear-algebra-quiz .option label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #ff8c00; /* Orange dot */
+    background-color: transparent; /* Initially transparent */
+}
+
+/* On selecting the option, change dot color */
+.linear-algebra-quiz .option input[type="radio"]:checked + label::before {
+    background-color: #ff8c00; /* Orange */
+}
+
+/* Emoji Styling */
+.linear-algebra-quiz .question-text::before {
+    content: '🤔 ';
+}
+
+.linear-algebra-quiz .question-text::after {
+    margin-left: 10px;
+}
+
+.linear-algebra-quiz .question-text[data-question-type="math"]::after {
+    content: '➕';
+}
+
+.linear-algebra-quiz .question-text[data-question-type="linear-algebra"]::after {
+    content: '➗';
+}
+
+.linear-algebra-quiz .question-text[data-question-type="geometry"]::after {
+    content: '📐';
+}
+
+.linear-algebra-quiz .question-text[data-question-type="statistics"]::after {
+    content: '📊';
+}
+/* Algebra Quiz Page Specific Styles */
+.algebra-quiz .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.timer {
+    font-size: 1.5em;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.question-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Move to the bottom of the question card */
+}
+
+#question-nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+#question-nav li {
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 50%; /* Rounded to make dots */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#question-nav li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.question-card {
+    width: 100%;
+    max-width: 600px; /* Adjusted width */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px; /* Move to the bottom of the question card */
+}
+
+.question-buttons button {
+    background-color: #007bff; /* Blue button */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.question-buttons button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Option Dots */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.option input[type="radio"] {
+    display: none; /* Hide the radio buttons */
+}
+
+.option label {
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px; /* Space for the dot */
+    font-size: 1em;
+}
+
+/* Create the dot */
+.option label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #007bff; /* Blue dot */
+    background-color: transparent; /* Initially transparent */
+}
+
+/* On selecting the option, change dot color */
+.option input[type="radio"]:checked + label::before {
+    background-color: #007bff; /* Blue */
+}
+
+/* Emoji Styling */
+.question-text::before {
+    content: '🤔 ';
+}
+
+.question-text::after {
+    margin-left: 10px;
+}
+
+.question-text[data-question-type="math"]::after {
+    content: '➕';
+}
+
+.question-text[data-question-type="measurement"]::after {
+    content: '📏';
+}
+
+.question-text[data-question-type="geometry"]::after {
+    content: '📐';
+}
+
+.question-text[data-question-type="statistics"]::after {
+    content: '📊';
+}
+
+.crocodile-img {
+    width: 100px; /* Adjust the width as necessary */
+    margin-left: 20px; /* Adjust the margin as necessary */
+    vertical-align: middle;
+    float: right;
+}
+/* Level Card Styles */
+/* Container holding the cards */
+.levels-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Space out the cards */
+    width: 100%;
+    max-width: 1200px; /* Adjust the max width as needed */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Individual level card */
+.level-card {
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Adjust maximum width as needed */
+    height: 500px; /* Adjust height as needed */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px; /* Adjust margin between cards */
+}
+
+.card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire card */
+}
+
+.content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 1;
+}
+
+.content-details {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 2;
+    color: #fff;
+}
+
+.content-details h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.content-details p {
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px; /* Adjust height of progress bar */
+    background-color: #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    width: 50%; /* Adjust initial progress width as needed */
+    background-color: #28a745; /* Green progress color */
+    transition: width 0.3s ease;
+}
+
+.start-button {
+    background-color: #007bff; /* Blue button */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

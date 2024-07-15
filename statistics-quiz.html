@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Quiz - Mathematics Hub</title>
+    <link rel="stylesheet" href="quizzes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Mathematics Hub</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="firsties.php">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="quizzes.html">Quizzes</a></li>
+                    <li><a href="contact.html">Contact & Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <section class="statistics-quiz">
+            <div class="container">
+                <div class="timer">Time Left: <span id="timer">15:00</span></div>
+                <div class="progress-bar">
+                    <div class="progress-bar-inner" id="progress-bar-inner" style="width: 0%;"></div>
+                </div>
+                <div class="question-card" id="question-card">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+                <div class="question-buttons">
+                    <button id="prev-btn" onclick="prevQuestion()">Previous</button>
+                    <button id="next-btn" onclick="nextQuestion()">Next</button>
+                </div>
+                <div class="question-navigation">
+                    <ul id="question-nav">
+                        <!-- Question numbers will be inserted here by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2024 Mathematics Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .summary-table th, .summary-table td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .performance-message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .emoji {
+            font-size: 2em;
+            margin-top: 10px;
+        }
+    </style>
+    
+    <script>
+        let questions = [
+            { type: 'objective', text: 'What is the average of 12, 15, and 20?', options: ['12', '15', '20', '17'], answer: '', correctAnswer: '15' },
+            { type: 'objective', text: 'What measure of central tendency is most affected by extreme values?', options: ['Mean', 'Median', 'Mode', 'Standard Deviation'], answer: '', correctAnswer: 'Mean' },
+            { type: 'objective', text: 'What does standard deviation measure?', options: ['Spread of data', 'Central value', 'Skewness', 'Range'], answer: '', correctAnswer: 'Spread of data' },
+            { type: 'objective', text: 'In a normal distribution, what percentage of data falls within one standard deviation from the mean?', options: ['50%', '68%', '95%', '99.7%'], answer: '', correctAnswer: '68%' },
+            { type: 'objective', text: 'What is the probability of rolling a 6 with a fair six-sided die?', options: ['1/6', '1/3', '1/2', '2/3'], answer: '', correctAnswer: '1/6' },
+            { type: 'theory', text: 'Explain the difference between correlation and causation.', answer: '', correctAnswer: 'Correlation indicates a relationship between two variables, whereas causation implies that one variable causes the other.' },
+            { type: 'theory', text: 'Describe the process of calculating the z-score for a data point.', answer: '', correctAnswer: 'To calculate the z-score, subtract the mean from the data point and then divide by the standard deviation.' },
+            { type: 'theory', text: 'What is the significance of hypothesis testing in statistics?', answer: '', correctAnswer: 'Hypothesis testing helps determine if there is enough evidence in a sample of data to infer something about a population.' },
+            { type: 'theory', text: 'How do you interpret a p-value in hypothesis testing?', answer: '', correctAnswer: 'A p-value is the probability of observing a test statistic at least as extreme as the one observed, given that the null hypothesis is true. A lower p-value indicates stronger evidence against the null hypothesis.' },
+            { type: 'theory', text: 'Explain the concept of sampling distribution.', answer: '', correctAnswer: 'A sampling distribution is the probability distribution of a sample statistic that is obtained through a large number of samples drawn from a specific population.' },
+        ];
+    
+        let currentQuestionIndex = 0; // Current question index
+        let correctAnswers = 0; // Variable to store number of correct answers
+        let incorrectAnswers = 0; // Variable to store number of incorrect answers
+        let timerInterval; // Interval variable for timer
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            displayQuestion(currentQuestionIndex); // Display first question
+            startTimer(15); // Start timer for 15 minutes
+        });
+    
+        function displayQuestion(index) {
+            const questionCard = document.getElementById('question-card');
+            questionCard.innerHTML = ''; // Clear existing content
+    
+            const question = questions[index]; // Get current question
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('question');
+    
+            const questionText = document.createElement('h2');
+            questionText.innerText = question.text;
+            questionElement.appendChild(questionText);
+    
+            if (question.type === 'objective') {
+                const optionsContainer = document.createElement('div');
+                optionsContainer.classList.add('options');
+    
+                question.options.forEach((option, optionIndex) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.classList.add('option');
+    
+                    const radioInput = document.createElement('input');
+                    radioInput.type = 'radio';
+                    radioInput.name = `question-${index}-options`;
+                    radioInput.value = option;
+                    radioInput.id = `question-${index}-option-${optionIndex}`;
+                    radioInput.onchange = () => selectOption(option);
+    
+                    const optionLabel = document.createElement('label');
+                    optionLabel.setAttribute('for', `question-${index}-option-${optionIndex}`);
+                    optionLabel.innerText = option;
+    
+                    optionElement.appendChild(radioInput);
+                    optionElement.appendChild(optionLabel);
+                    optionsContainer.appendChild(optionElement);
+                });
+    
+                questionElement.appendChild(optionsContainer);
+            } else if (question.type === 'theory') {
+                const answerInput = document.createElement('textarea');
+                answerInput.placeholder = 'Type your answer here...';
+                answerInput.value = question.answer; // Set answer if already answered
+                answerInput.oninput = (e) => questions[index].answer = e.target.value;
+                questionElement.appendChild(answerInput);
+            }
+    
+            questionCard.appendChild(questionElement);
+    
+            populateQuestionNav(); // Update question navigation dots
+            updateProgressBar(); // Update progress bar
+    
+            if (index === questions.length - 1) {
+                const finishButton = document.createElement('button');
+                finishButton.id = 'finish-button';
+                finishButton.innerText = 'Finish Quiz';
+                finishButton.addEventListener('click', () => showSummary());
+                questionCard.appendChild(finishButton);
+            }
+        }
+    
+        function selectOption(option) {
+            questions[currentQuestionIndex].answer = option;
+        }
+    
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion(currentQuestionIndex);
+            }
+        }
+    
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion(currentQuestionIndex);
+            }
+        }
+    
+        function populateQuestionNav() {
+            const questionNav = document.getElementById('question-nav');
+            questionNav.innerHTML = ''; // Clear existing dots
+    
+            questions.forEach((_, index) => {
+                const navDot = document.createElement('li');
+                navDot.classList.add('nav-dot');
+                if (index === currentQuestionIndex) {
+                    navDot.classList.add('active');
+                }
+                navDot.addEventListener('click', () => {
+                    currentQuestionIndex = index;
+                    displayQuestion(index);
+                });
+                questionNav.appendChild(navDot);
+            });
+        }
+    
+        function updateProgressBar() {
+            const progressBarInner = document.getElementById('progress-bar-inner');
+            const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBarInner.style.width = `${progressPercentage}%`;
+        }
+    
+        function startTimer(minutes) {
+            const timerElement = document.getElementById('timer');
+            let timeRemaining = minutes * 60; // Convert minutes to seconds
+    
+            timerInterval = setInterval(() => {
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                timerElement.innerText = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+    
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    showSummary();
+                }
+    
+                timeRemaining--;
+            }, 1000);
+        }
+    
+        function showSummary() {
+            clearInterval(timerInterval); // Stop the timer
+    
+            questions.forEach((question, index) => {
+                if (question.type === 'objective' && question.answer === question.correctAnswer) {
+                    correctAnswers++;
+                } else if (question.type === 'objective') {
+                    incorrectAnswers++;
+                }
+            });
+    
+            const summaryHtml = `
+                <h2>Quiz Summary</h2>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            <th>Your Answer</th>
+                            <th>Correct Answer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${questions.map((question, index) => `
+                            <tr>
+                                <td>${question.text}</td>
+                                <td>${question.answer || 'No Answer'}</td>
+                                <td>${question.correctAnswer}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+                <p class="performance-message">
+                    You got ${correctAnswers} out of ${questions.length} questions correct.
+                </p>
+                <button onclick="retakeQuiz()">Retake Quiz</button>
+                <button onclick="returnToMainMenu()">Return to Main Menu</button>
+            `;
+    
+            const questionCard = document.getElementById('question-card');
+            questionCard.innerHTML = summaryHtml;
+
+            // Save the results to the server
+            saveQuizResults();
+        }
+
+        function saveQuizResults() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'save_quiz_attempt.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Quiz results saved successfully');
+                    } else {
+                        console.error('Failed to save quiz results');
+                    }
+                }
+            };
+            xhr.send(JSON.stringify({
+                correctAnswers: correctAnswers,
+                incorrectAnswers: incorrectAnswers,
+                questions: questions
+            }));
+        }
+    
+        function retakeQuiz() {
+            currentQuestionIndex = 0;
+            correctAnswers = 0;
+            incorrectAnswers = 0;
+            questions.forEach(question => question.answer = '');
+            displayQuestion(currentQuestionIndex);
+            startTimer(15);
+        }
+    
+        function returnToMainMenu() {
+            window.location.href = 'quizzes.html';
+        }
+    </script>
+</body>
+</html>

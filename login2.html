@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+
+  <link rel="stylesheet" href="login2.css">
+  <link rel="stylesheet" href="styless.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="firsties.html">
+                <img src="NEW.jpg" alt="Edswandres' Mathematics Hub Logo" class="logo-image">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="firsties.php"><strong>Home</strong></a></li>
+                <li><a href="forum.html"><strong>Forum</strong></a></li>
+                <li><a href="quizzes.html"><strong>Quizzes</strong></a></li>
+                <li class="search-bar">
+                    <input type="text" placeholder="Search..." class="search-input">
+                    <button class="search-button">🔎</button>
+                </li>
+                <li><a href="courses.html"><strong>Certificate</strong></a></li>
+                <li><a href="contactpage11.html"><strong>Contact & Support</strong></a></li>
+                <li><a href="login2.html"><strong>Login</strong></a></li>
+                <li>
+                    <button class="dashboard-btn" onclick="openRightNav()">🧑</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+ </header>
+ <div id="rightSidebar" class="sidebar right-sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeRightNav()">×</a>
+  <div class="profile-info">
+      <div class="profile-emoji">🧑</div>
+      <div class="progress-circle">
+          <svg>
+              <circle cx="50" cy="50" r="45"></circle>
+              <circle cx="50" cy="50" r="45" id="progress"></circle>
+          </svg>
+          <div class="progress-value">75%</div>
+      </div>
+  </div>
+  <div class="sidebar-search">
+      <input type="text" placeholder="Search..." class="search-input">
+      <button class="search-button">🔎</button>
+  </div>
+  <a href="#">Recently Accessed Courses</a>
+  <a href="#">Recently Accessed Quizzes</a>
+  <a href="#">Edit Profile</a>
+  <a href="#">Track Your Progress</a>
+  <a href="#">Logout</a>
+</div>
+  <div class="role-selection">
+    <h2>Select Your Role</h2>
+    <button onclick="showLoginForm('student')">Student</button>
+    <button onclick="showLoginForm('teacher')">Teacher</button>
+  </div>
+  <div class="login-container">
+    <form id="login-form" action="processLogin.php" method="post">
+      <h2 id="login-title">Login</h2>
+      <div class="form-control">
+        <label for="studentID">StudentID:</label>
+        <input type="text" id="studentID" name="studentID" placeholder="Enter your StudentID" required>
+      </div>
+      <div class="form-control">
+        <label for="password">Password:</label>
+        <div class="password-input-container">
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <span class="password-toggle" onclick="togglePasswordVisibility()">Show</span>
+        </div>
+      </div>
+      <div class="form-control remember-me">
+        <input type="checkbox" id="remember-me" name="remember-me">
+        <label for="remember-me">Remember Me</label>
+      </div>
+      <button type="submit">Login</button>
+      <div class="social-login">
+        <p>or sign up using</p>
+        <button type="button" class="social-button google"><i class="fab fa-google"></i> Google</button>
+        <button type="button" class="social-button github"><i class="fab fa-github"></i> GitHub</button>
+        <button type="button" class="social-button facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+      </div>
+    </form>
+    <div class="additional-links">
+      <a href="forgotpassword.html" class="forgot-password" onclick="showForgotPasswordForm()">Forgot Password?</a>
+      <span class="separator"> | </span>
+      <a href="#" class="sign-up" onclick="showSignUpForm()">Sign Up</a>
+    </div>
+  </div>
+  
+  <div id="forgot-password-form" class="form-container">
+    <h2>Forgot Password</h2>
+    <form>
+      <div class="form-control">
+        <label for="forgot-email">Email</label>
+        <input type="email" id="forgot-email" name="forgot-email" placeholder="Enter your email" required>
+      </div>
+      <button type="submit">Reset Password</button>
+      <button type="button" class="close-btn" onclick="closeForm('forgot-password-form')">Close</button>
+    </form>
+  </div>  
+  
+  <div id="sign-up-form" class="form-container">
+    <h2>Sign Up</h2>
+    <form action="processRegistration.php" method="post">
+      <div class="form-group">
+        <div class="form-control">
+          <label for="signup-firstname">First name</label>
+          <input type="text" id="signup-firstname" name="first_name" placeholder="Enter your first name" required>
+        </div>
+        <div class="form-control">
+          <label for="signup-lastname">Last name</label>
+          <input type="text" id="signup-lastname" name="last_name" placeholder="Enter your last name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-control">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-control">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" name="password" placeholder="Enter your password" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-control">
+          <label for="signup-confirm-password">Confirm Password</label>
+          <input type="password" id="signup-confirm-password" name="confirm_password" placeholder="Enter your password again" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-control">
+          <label for="signup-address">Address</label>
+          <input type="text" id="signup-address" name="address" placeholder="Enter your address" required>
+        </div>
+        <div class="form-control">
+          <label for="signup-contact">Mobile no</label>
+          <input type="tel" id="signup-contact" name="phone_number" placeholder="Enter your number" required>
+        </div>
+      </div>
+      <button type="submit">Sign Up</button>
+      <button type="button" class="close-btn" onclick="closeForm('sign-up-form')">Close</button>
+    </form>
+  </div>
+  
+  <script>
+    // Function to show the login form based on selected role
+    function showLoginForm(role) {
+      var loginTitle = document.getElementById('login-title');
+      var studentIDLabel = document.querySelector('label[for="studentID"]');
+      if (role === 'student') {
+        loginTitle.textContent = 'Student Login';
+        studentIDLabel.textContent = 'StudentID:';
+      } else if (role === 'teacher') {
+        loginTitle.textContent = 'Teacher Login';
+        studentIDLabel.textContent = 'TeacherID:';
+      }
+      
+      // Hide the role selection and display the login form
+      document.querySelector('.role-selection').style.display = 'none';
+      document.querySelector('.login-container').style.display = 'block';
+    }
+  
+    // Initial setup to hide the login form
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.login-container').style.display = 'none';
+      document.querySelector('.form-container').style.display = 'none';
+    });
+  
+    // Function to handle role selection buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      var studentButton = document.getElementById('student-button');
+      var teacherButton = document.getElementById('teacher-button');
+  
+      studentButton.addEventListener('click', function() {
+        showLoginForm('student');
+      });
+  
+      teacherButton.addEventListener('click', function() {
+        showLoginForm('teacher');
+      });
+    });
+  
+    // Function to show the Sign-Up form
+    function showSignUpForm() {
+      document.getElementById('sign-up-form').style.display = 'block';
+      document.querySelector('.login-container').style.display = 'none';
+    }
+  
+    // Function to show the Forgot Password form
+    function showForgotPasswordForm() {
+      document.getElementById('forgot-password-form').style.display = 'block';
+      document.querySelector('.login-container').style.display = 'none';
+    }
+  
+    // Function to close any form and show the login form
+    function closeForm(formId) {
+      document.getElementById(formId).style.display = 'none';
+      document.querySelector('.login-container').style.display = 'block';
+    }
+  
+    // Function to toggle password visibility
+    function togglePasswordVisibility() {
+      var passwordInput = document.getElementById("password");
+      var passwordToggle = document.querySelector(".password-toggle");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        passwordToggle.textContent = "Hide";
+      } else {
+        passwordInput.type = "password";
+        passwordToggle.textContent = "Show";
+      }
+    }
+  </script>  
+  
+</body>
+</html>

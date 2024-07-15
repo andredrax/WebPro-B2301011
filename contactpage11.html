@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="contactpage11.css">
+  <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="firsties.html">
+                <img src="NEW.jpg" alt="Edswandres' Mathematics Hub Logo" class="logo-image">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="firsties.php"><strong>Home</strong></a></li>
+                <li><a href="forum.html"><strong>Forum</strong></a></li>
+                <li><a href="quizzes.html"><strong>Quizzes</strong></a></li>
+                <li class="search-bar">
+                    <input type="text" placeholder="Search..." class="search-input">
+                    <button class="search-button">🔎</button>
+                </li>
+                <li><a href="courses.html"><strong>Certificate</strong></a></li>
+                <li><a href="contactpage.html"><strong>Contact & Support</strong></a></li>
+                <li><a href="login2.html"><strong>Login</strong></a></li>
+                <li>
+                    <button class="dashboard-btn" onclick="openRightNav()">🧑</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div id="rightSidebar" class="sidebar right-sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeRightNav()">×</a>
+    <div class="profile-info">
+        <div class="profile-emoji">🧑</div>
+        <div class="progress-circle">
+            <svg>
+                <circle cx="50" cy="50" r="45"></circle>
+                <circle cx="50" cy="50" r="45" id="progress"></circle>
+            </svg>
+            <div class="progress-value">75%</div>
+        </div>
+    </div>
+    <div class="sidebar-search">
+        <input type="text" placeholder="Search..." class="search-input">
+        <button class="search-button">🔎</button>
+    </div>
+    <a href="#">Recently Accessed Courses</a>
+    <a href="#">Recently Accessed Quizzes</a>
+    <a href="#">Edit Profile</a>
+    <a href="#">Track Your Progress</a>
+    <a href="#">Logout</a>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>Contact Us</h1>
+    <p>Sign in so we can get you the right help and support.</p>
+    <button onclick="location.href='#'">Sign In</button>
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="cards">
+    <div class="card">
+      <h3>Frequently Asked Questions</h3>
+      <p>Find answers to common questions and issues.</p>
+      <button onclick="location.href='#faq'">Learn More</button>
+    </div>
+    <div class="card">
+      <h3>More Support Options</h3>
+      <p>Explore other ways to get support for your products.</p>
+      <button onclick="location.href='#support'">Learn More</button>
+    </div>
+  </div>
+  
+  <div class="contact-link">
+    <h3>Need more help?</h3>
+    <p>Contact us directly.</p>
+    <button onclick="location.href='#contactForm'">Contact Us</button>
+  </div>
+
+  <div class="info-card" id="faq">
+    <h3>Frequently Asked Questions</h3>
+    <p>We usually respond within 24 hours on weekdays. Our working hours are Monday to Friday, 9:00 AM to 5:00 PM.</p>
+  </div>
+  
+  <form id="contactForm" action="/submit-form" method="post" class="contact-form">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="Your email.." required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="Write something.." style="height:200px" required></textarea>
+
+    <label for="feedback">Additional Feedback (Optional)</label>
+    <textarea id="feedback" name="feedback" placeholder="Your feedback or comments.." style="height:100px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+  
+  <div class="response" id="responseMessage">
+    <!-- This is where the response message will appear -->
+  </div>
+</div>
+<footer>
+  <div class="footer-container">
+      <div class="footer-left">
+          <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+          </ul>
+      </div>
+      <div class="footer-right">
+          <div class="social-icons">
+              <a href="#" target="_blank" class="social-icon">
+                  <img src="FB.webp" alt="Facebook">
+              </a>
+              <a href="#" target="_blank" class="social-icon">
+                  <img src="X.jpg" alt="Twitter">
+              </a>
+              <a href="#" target="_blank" class="social-icon">
+                  <img src="IG.jpg" alt="Instagram">
+              </a>
+          </div>
+          <div class="about-us">
+              <a href="aboutus.html">About Us: Edswandres' Mathematics Hub is dedicated to providing quality education in mathematics.</a>
+          </div>
+      </div>
+  </div>
+  <div class="copyright">
+      <p>&copy; 2024 Edswandres' Mathematics Hub. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script src="contactpage11.js"></script>
+</body>
+</html>

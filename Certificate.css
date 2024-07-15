@@ -1,0 +1,20 @@
+/* CSS for centering image and setting background color */
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures full viewport height */
+    margin: 0; /* Remove default margin */
+  }
+  
+  img {
+    display: block;
+    max-width: 100%; 
+    height: auto; 
+    margin: auto; /* Centers the image horizontally */
+  }
+  
+  
+
+  

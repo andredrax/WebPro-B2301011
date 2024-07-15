@@ -1,0 +1,900 @@
+/* In your CSS file (project/styles.css) */
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background: linear-gradient(to bottom, rgb(7, 7, 7), rgba(32, 31, 33, 0.87), rgba(38, 38, 39, 0)); /* Black fading background */
+    color: #ffffff; /* White text */
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.5s ease; /* Smooth transition for background color */
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.header .logo h1 {
+    margin: 0;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
+}
+
+nav {
+    background-color: transparent; /* Transparent background */
+    padding: 10px 20px;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-image {
+    max-height: 40px; /* Adjust as needed */
+    width: 100%;
+}
+
+.nav-links li {
+    margin: 0 10px; /* Adjusted the margin to create space between navigation links */
+}
+
+.nav-links a {
+    color: #c47011;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+}
+
+
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    filter: blur(0px);
+    position: relative;
+    overflow: hidden; /* Ensure the pseudo-element does not overflow */
+}
+
+.slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0) 20%, rgb(10, 12, 139) 100%);
+    pointer-events: none; /* Ensure the pseudo-element doesn't interfere with interactions */
+    filter: blur(2px);
+    z-index: 1;
+}
+
+
+.slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: blur(5px);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(178, 178, 179, 0.4); /* Blue overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    position: absolute;
+    z-index: 2;
+    color: #fff; /* White text */
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    border-radius: 20px; /* Added border-radius to make the edges curved */
+    overflow: hidden; /* Added overflow hidden to hide any content exceeding the curved edges */
+}
+
+.search-bar .search-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 70%;
+    border: none;
+    outline: none;
+    border-radius: 20px; /* Added border-radius to match the parent container */
+}
+
+.search-bar .search-button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 20px; /* Added border-radius to match the parent container */
+}
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 10px; /* Adjusted the margin to create space between navigation links */
+}
+
+.nav-extras {
+    display: flex;
+    align-items: center; /* Centered the items vertically */
+}
+.search-bar {
+    margin-right: 10px; /* Added margin to create space between search bar and other links */
+}
+
+.dashboard-btn {
+    margin-right: 10px; /* Added margin to create space between dashboard button and other links */
+}
+
+.search-button img {
+    width: 20px; 
+    height: 20px;
+}
+
+.search-button:hover {
+    background-color: #ff4d00; 
+}
+
+.lets-go-btn {
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff6f00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ff4d00;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.nav-arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+    color: #fff;
+}
+
+.nav-arrows .prev,
+.nav-arrows .next {
+    cursor: pointer;
+    padding: 16px;
+}
+
+.features {
+    padding: 50px 20px;
+    background-color: #f4f4f4; /* Light grey background */
+    text-align: center;
+    color: #333; /* Dark text */
+}
+
+.features .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+}
+
+.features .feature-card {
+    width: calc(33.33% - 20px);
+    background-color: rgba(0, 42, 252, 0.836);
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.features .feature-card:hover {
+    background-color: #ff7b00;
+    transform: translateY(-10px);
+}
+
+.features .feature-card:hover .btn-orange {
+    background-color: #0077ff; /* Blue color */
+    border-color: #0077ff; /* Matching border color */
+}
+
+.features .feature-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.features .card-content {
+    padding: 20px;
+}
+
+.features .card-content h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.features .card-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.info-sections {
+    padding: 50px 20px;
+    background-color: #b41c1c;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.info-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: calc(33.333% - 20px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.info-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.info-card h3 {
+    font-size: 1.5em;
+    margin: 20px 0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.info-card p {
+    font-size: 1em;
+    padding: 0 20px 20px;
+    color: #666;
+}
+
+.info-section {
+    position: relative;
+    padding: 50px 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keep the background image fixed */
+}
+
+.info-section .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for readability */
+    border-radius: 10px;
+}
+
+.info-section .section-text h2 {
+    font-size: 2em;
+    margin: 0 0 20px;
+    font-family: 'Orbitron', sans-serif;
+    color: #1026a0; /* Dark text */
+}
+
+.info-section .section-image {
+    flex-basis: 40%;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-section .section-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    filter: blur(0px);
+}
+
+.info-section .section-content {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.info-section .section-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    color: #1026a0; /* Dark text */
+}
+
+.btn-wrapper {
+    text-align: center;
+}
+
+.btn-orange {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff4d00; /* Orange color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-orange:hover {
+    background-color: #ff6347; /* Darker orange on hover */
+}
+
+/* Specific background images for each section */
+.learn-mathematics {
+    background-image: url('image1.jpg'); /* Replace with your image URL for Learn Mathematics */
+}
+
+.test-your-knowledge {
+    background-image: url('image2.jpg'); /* Replace with your image URL for Test your Knowledge */
+}
+
+.get-your-certificate {
+    background-image: url('image3.jpg'); /* Replace with your image URL for Get your Certificate */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-left ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-left ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.footer-left ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+}
+
+.social-icon {
+    margin-right: 10px;
+}
+
+.about-us {
+    margin-left: 20px;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+}
+/* Right Sidebar */
+/* Right Sidebar */
+/* Right Sidebar */
+/* Right Sidebar */
+.right-sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.right-sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ff9800;
+    display: block;
+    transition: 0.3s;
+}
+
+.right-sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.right-sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #ff9800;
+}
+
+.dashboard-btn {
+    background-color: #ff9800;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+    margin-top: 15px; /* Aligning the button to the level of other navigation items */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-emoji {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.progress-circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.progress-circle svg {
+    width: 100px;
+    height: 100px;
+}
+
+.progress-circle circle {
+    fill: none;
+    stroke-width: 10;
+    transform: translate(5px, 5px);
+    stroke-linecap: round;
+}
+
+.progress-circle circle:first-child {
+    stroke: #eee;
+}
+
+.progress-circle circle:last-child {
+    stroke: #2196f3; /* Blue progress bar */
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 62.8; /* Adjust this value according to progress */
+    transition: stroke-dashoffset 0.5s;
+}
+
+.progress-circle .progress-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #ff9800; /* Orange text */
+}
+
+.sidebar-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    background-color: #fff; /* Changed background color to white */
+    padding: 10px; /* Added padding for better appearance */
+    border-radius: 5px; /* Added border radius for rounded corners */
+}
+
+.sidebar-search .search-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 70%;
+    border: none; /* Removed border */
+    outline: none; /* Removed outline */
+}
+
+.sidebar-search .search-button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+}
+
+
+/* Reset default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Reset default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full-page layout */
+/* Reset default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Fallback font */
+    background-color: #000; /* Black background */
+}
+
+/* Overall forum container */
+.forum-container {
+    width: 100%;
+    height: calc(100vh - 60px); /* Full height minus header */
+    display: flex;
+    flex-direction: column;
+    color: #333; /* Dark gray text */
+    padding: 20px;
+}
+
+/* Forum title */
+.forum-container h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    color: #fff; /* White text */
+}
+
+/* Content within the forum */
+.forum-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a; /* Dark gray background */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Sections within the forum */
+.forum-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Online status */
+.online-status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #fff; /* White text */
+}
+
+/* Green dot */
+.green-dot {
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Chat messages area */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #000;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Individual chat message */
+.chat-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Message from user */
+.message.user {
+    background-color: #262626;
+    color: #fff;
+    text-align: right;
+}
+
+/* Message from others */
+.message.other {
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+}
+
+/* Form for chatting */
+.chat-form {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* Input field for chatting */
+.chat-form input[type=text] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 8px 0 0 8px;
+    background-color: #262626;
+    color: #fff;
+}
+
+/* Button for chatting */
+.chat-form button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #ff8c00; /* Orange background */
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Button hover effect */
+.chat-form button:hover {
+    background-color: #e07c00;
+}
+
+
+
+/* Footer styling */
+.footer-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    color: #666; /* Gray text */
+}
+
+.footer-left ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-left ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.social-icons .social-icon {
+    margin-right: 10px;
+}
+
+.about-us p {
+    font-size: 14px;
+    color: #fff; /* White text */
+    line-height: 1.6;
+}
+
+
+/* General styles for body, header, navigation, etc. (already provided) */
+
+/* Quiz section styles */
+
+.quiz-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.quiz-card {
+    flex: 1 1 calc(20% - 20px); /* Adjust width here as needed */
+    background-color: #0077ff; /* Blue background color */
+    color: #fff; /* White text color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+    padding-bottom: 20px;
+}
+
+.card-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-family: 'Proxima Nova', sans-serif;
+}
+
+.card-content h2 .highlight-text {
+    color: orange; /* Orange color for "Understanding" text */
+}
+
+.card-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #fff;
+    height: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust progress bar color */
+    width: 0;
+    transition: width 0.5s ease;
+}
+
+.arrow-link {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.arrow-link span {
+    margin-left: 5px;
+    font-size: 1.2em;
+}
+v.social-icons {
+    display: flex;
+}
+
+.social-icon {
+    margin-right: 10px;
+}
+
+.social-icon img {
+    width: 30px; /* Adjust the width to your preference */
+    height: auto; /* Maintain aspect ratio */
+}
